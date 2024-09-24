@@ -1,0 +1,82 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>index.hmtl</title><style></style></head><body id="preview">
+<p class="has-line-data" data-line-start="0" data-line-end="52">&lt;!DOCTYPE html&gt;<br>
+&lt;html lang=“es”&gt;<br>
+&lt;head&gt;<br>
+&lt;meta charset=“UTF-8”&gt;<br>
+&lt;meta name=“viewport” content=“width=device-width, initial-scale=1.0”&gt;<br>
+&lt;title&gt;Generador de Poemas&lt;/title&gt;<br>
+&lt;link href=&quot;<a href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap">https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap</a>&quot; rel=“stylesheet”&gt;<br>
+&lt;style&gt;<br>
+body {<br>
+font-family: ‘Montserrat’, sans-serif;<br>
+background-color: #000000;<br>
+color: #ffffff;<br>
+display: flex;<br>
+justify-content: center;<br>
+align-items: center;<br>
+height: 100vh;<br>
+margin: 0;<br>
+}<br>
+.container {<br>
+display: flex;<br>
+align-items: center;<br>
+}<br>
+img {<br>
+width: 250px;<br>
+border-radius: 10px;<br>
+margin-right: 20px;<br>
+}<br>
+#poema {<br>
+background-color: #000000;<br>
+color: #ffffff;<br>
+padding: 20px;<br>
+border: 2px solid #ffffff;<br>
+width: 300px;<br>
+font-size: 18px;<br>
+text-align: left;<br>
+}<br>
+button {<br>
+background-color: #FFD700;<br>
+border: none;<br>
+color: #000000;<br>
+padding: 10px 20px;<br>
+font-size: 20px;<br>
+cursor: pointer;<br>
+font-family: ‘Comic Sans MS’, cursive, sans-serif;<br>
+font-weight: bold;<br>
+}<br>
+button:hover {<br>
+background-color: #FFC300;<br>
+}<br>
+&lt;/style&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;</p>
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+    &lt;!-- Imagen del poeta --&gt;
+    &lt;img src=&quot;mariosantiago.jpg&quot; alt=&quot;Imagen del poeta&quot;&gt;
+
+    &lt;!-- Caja de texto del poema --&gt;
+    &lt;div&gt;
+        &lt;div id=&quot;poema&quot;&gt;El poema aparecerá aquí...&lt;/div&gt;
+        &lt;br&gt;
+        &lt;!-- Botón para generar poema --&gt;
+        &lt;button onclick=&quot;generarPoema()&quot;&gt;ACÁ LAS CHINGADERAS&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Script para integrar el modelo de Hugging Face --&gt;
+&lt;script&gt;
+    async function generarPoema() {
+        const response = await fetch('https://api-inference.huggingface.co/models/NicanorAzufre/Mario_Papasquiaro_1clicborraco', {
+            method: 'POST',
+            headers: { 'Authorization': 'Bearer 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' },
+            body: JSON.stringify({ inputs: &quot;Escribe el prompt aquí&quot; })
+        });
+        const result = await response.json();
+        document.getElementById('poema').innerText = result[0].generated_text;
+    }
+&lt;/script&gt;
+</code></pre>
+<p class="has-line-data" data-line-start="79" data-line-end="81">&lt;/body&gt;<br>
+&lt;/html&gt;</p>
+</body></html>
